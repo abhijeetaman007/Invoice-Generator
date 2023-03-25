@@ -1,25 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import InvoiceGenerator from './components/InvoiceGenerator';
+import {Container} from 'react-bootstrap'
+import InvoiceTemplate from './components/templates/InvoiceTemplate';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+          <InvoiceGenerator/>
+        </div>
+    );
 }
 
 export default App;
