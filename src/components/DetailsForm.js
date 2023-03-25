@@ -1,36 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-export default function DetailsForm() {
+export default function DetailsForm(props) {
     const [name, setName] = useState();
     const [address, setAddress] = useState();
     const [phoneNumber, setPhoneNumber] = useState();
     const [email, setEmail] = useState();
 
 
-    const handleFormSubmit = (e) => {
+    // const handleFormSubmit =async (e) => {
         
-        e.preventDefault();
+    //     e.preventDefault();
         
-        if(!name){
-            toast.error('Please enter name')
-            return;    
-        }
-        if(!address){
-            toast.error('Please enter address')
-            return
-        }
-        if(!phoneNumber){
-            toast.error('Please enter phone number')
-            return;
-        }
-        if(!email){
-            toast.error('Please enter email')
-        }
+    //     if(!name){
+    //         toast.error('Please enter name')
+    //         return;    
+    //     }
+    //     if(!address){
+    //         toast.error('Please enter address')
+    //         return
+    //     }
+    //     if(!phoneNumber){
+    //         toast.error('Please enter phone number')
+    //         return;
+    //     }
+    //     if(!email){
+    //         toast.error('Please enter email')
+    //     }
 
-        console.log("We got your values")
-        console.log(name,address,phoneNumber,email)
-        handleClear(e)
+    //     await props.updateDetails({name,address,phoneNumber,email})
+
+    //     console.log("We are back!")
+    //     // console.log("We got your values")
+    //     // console.log(name,address,phoneNumber,email)
+    //     handleClear(e)
+
+    // }
+
+    let handleUpdateName = (event) =>{
+        setName(event.target.value)
+        // props.updateDetails({
+        //     name,email,address,phoneNumber
+        // })
+    }
+
+    let handleUpdateAddress = (event) =>{
+        setAddress(event.target.value)
+        // props.updateDetails({
+            // name,email,address,phoneNumber
+        // })
+    }
+
+    let handleUpdateEmail = (event) =>{
+        setEmail(event.target.value)   
+        // props.updateDetails({
+            // name,email,address,phoneNumber
+        // })
+    }
+
+    let handleUpdatePhoneNumber = (event) =>{
+        setPhoneNumber(event.target.value)
+        // props.updateDetails({
+            // name,email,address,phoneNumber
+        // })
     }
 
 
@@ -43,6 +75,11 @@ export default function DetailsForm() {
         setPhoneNumber('');
     }
 
+    useEffect(() => {
+        props.updateDetails({
+            name,email,address,phoneNumber
+        })
+    },[name,address,email,phoneNumber])
 
     return (
         <div>
@@ -55,7 +92,7 @@ export default function DetailsForm() {
                         placeholder="Enter Name"
                         value={name} // use state variable to keep track of value
                         // add onChange event to capture state changes when user types
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={handleUpdateName}
                     />
                     <label htmlFor="address">Address</label>
                     <input
@@ -65,7 +102,7 @@ export default function DetailsForm() {
                         placeholder="Enter Address"
                         value={address} // use state variable to keep track of value
                         // add onChange event to capture state changes when user types
-                        onChange={(e) => setAddress(e.target.value)}
+                        onChange={handleUpdateAddress}
                     />
                     <label htmlFor="phoneNumber">Phone Number</label>
                     <input
@@ -75,7 +112,7 @@ export default function DetailsForm() {
                         placeholder="Enter Phone Number"
                         value={phoneNumber} // use state variable to keep track of value
                         // add onChange event to capture state changes when user types
-                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        onChange={handleUpdatePhoneNumber}
                     />
                     <label htmlFor="email">Email</label>
                     <input
@@ -85,11 +122,11 @@ export default function DetailsForm() {
                         placeholder="Enter email"
                         value={email} // use state variable to keep track of value
                         // add onChange event to capture state changes when user types
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleUpdateEmail}
                     />
             </form>
             <div className="button-container">
-                    <button className="button" onClick={handleFormSubmit}>Submit</button>
+                    {/* <button className="button" onClick={handleFormSubmit}>Submit</button> */}
                     <Toaster />
                     <button className="button" onClick={handleClear}>
                         Clear

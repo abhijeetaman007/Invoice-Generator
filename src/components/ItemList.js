@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import Item from './Item';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
-export default function ItemList() {
+export default function ItemList(props) {
     const [items, setItems] = useState([{ name: '', price: '', qty: '' }]);
 
     const [total, setTotal] = useState(0);
@@ -15,6 +15,7 @@ export default function ItemList() {
         const newItems = [...items];
         newItems[index][event.target.name] = event.target.value;
         setItems(newItems);
+        // props.updateParentItem(items)
     };
 
     const handleAddItem = () => {
@@ -25,17 +26,22 @@ export default function ItemList() {
         const newItems = [...items];
         newItems.splice(index, 1);
         setItems(newItems);
+        // props.updateParentItem(items)
     };
 
     const handleDiscountChange = (event) =>{
-      let newDiscount = event.target.discount
-      setDiscount(newDiscount)
+      let newDiscount = event.target.value
+      setDiscount(Number(newDiscount))
+      // props.updateParentDiscount(newDiscount)
     }
 
     const handleTaxChange = (event) =>{
-      let newTax = event.target.tax
-      setTax(newTax)
+      let newTax = event.target.value
+      setTax(Number(newTax))
+      // props.updateParentTax(newTax)
     }
+
+
 
     // const handleTotaChange = (event) =>{
     //   let newDiscount = event.target.discount
@@ -48,13 +54,19 @@ export default function ItemList() {
             newTotal = newTotal + element.price * element.qty;
         });
 
-        setSubTotal(newTotal)
+        setSubTotal(Math.round(newTotal))
+        props.updateParentSubTotal(newTotal)
         
+        console.log("Discount is ",discount)
+        console.log("Tax is ",tax)
 
-        newTotal = newTotal - discount*newTotal
-        newTotal = newTotal + tax*newTotal
+        newTotal = newTotal - (Number(discount)/100)*newTotal
+        newTotal = newTotal + (Number(tax)/100)*newTotal
 
-        setTotal(newTotal);
+        setTotal(Math.round(newTotal));
+        props.updateParentTotal(newTotal)
+        props.updateParentItem(items)
+        
     }, [items,discount,tax]);
 
     return (
@@ -124,3 +136,11 @@ export default function ItemList() {
         </div>
     );
 }
+
+
+// TODOs:
+// Remove submit
+// Complte add signature and upload flow
+// Syling
+// Add Validatins before generate and download use of tooltip,highlight it and toast  
+// Add View Template(Additional)
