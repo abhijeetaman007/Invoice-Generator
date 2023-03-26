@@ -54,7 +54,10 @@ export default function ItemList(props) {
         newTotal = newTotal - (Number(discount)/100)*newTotal
         newTotal = newTotal + (Number(tax)/100)*newTotal
 
-        setTotal(Math.round(newTotal));
+        if(isNaN(newTotal))
+            newTotal = 0
+        setTotal(subTotal);
+        
         props.updateParentTotal(newTotal)
         props.updateParentItem(items)
 
@@ -66,9 +69,12 @@ export default function ItemList(props) {
     return (
         <div>
             <div className="ItemListWrapper">
+            <h2>Items</h2>
+              <hr/>
                 {items.map((item, index) => (
                     <div key={index} className="ItemWrapper">
-                        <input
+                        <input 
+                            className='ItemInput'
                             type="text"
                             name="name"
                             value={item.name}
@@ -76,6 +82,7 @@ export default function ItemList(props) {
                             onChange={(event) => handleItemChange(event, index)}
                         />
                         <input
+                            className='ItemInput'
                             type="number"
                             name="price"
                             value={item.price}
@@ -83,6 +90,7 @@ export default function ItemList(props) {
                             onChange={(event) => handleItemChange(event, index)}
                         />
                         <input
+                            className='ItemInput'
                             type="number"
                             name="qty"
                             value={item.qty}
@@ -99,14 +107,16 @@ export default function ItemList(props) {
                 ))}
                 <button onClick={handleAddItem}>Add item</button>
             </div>
-            <hr></hr>
+            
             <div className='TotalWrapper'>
+            <h2>Total</h2>
+              <hr/>
             <label htmlFor="discount">Discount</label>
                 <input
                     type="number"
                     name="discount"
                     value={discount}
-                    placeholder="Enter Discount"
+                    placeholder="Enter Discount Percentage"
                     onChange={(event) => handleDiscountChange(event)}
                 />
                  <label htmlFor="tax">Tax</label>
@@ -114,11 +124,11 @@ export default function ItemList(props) {
                     type="number"
                     name="tax"
                     value={tax}
-                    placeholder="Enter Tax"
+                    placeholder="Enter Tax Percentage"
                     onChange={(event) => handleTaxChange(event)}
                 />
-                <p>SubTotal : ${subTotal}</p>
-                <p>Total : $ {total}</p>
+                <hr/>
+                <h3 className='Total'>Total    :&nbsp;&nbsp;&nbsp; $ {total}</h3>
             </div>
         </div>
     );

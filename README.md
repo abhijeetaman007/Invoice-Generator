@@ -5,7 +5,7 @@ invoice as a PDF file.
 ## Setting Up Project
 ```
 npm install (To install all dependencies)
-npm start
+npm start (To start the application)
 ```
 
 ## Major Libraries Used

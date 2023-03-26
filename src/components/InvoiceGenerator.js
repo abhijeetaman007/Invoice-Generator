@@ -4,13 +4,14 @@ import InvoiceDetails from './sections/InvoiceDetails';
 import ItemList from './sections/ItemList';
 import InvoiceTemplate from './templates/InvoiceTemplate';
 import TotalSection from './sections/TotalSection';
+import logo from '../resources/logo.jpg'
 
 export default function InvoiceGenerator() {
     const [data, setData] = useState({
-        invoiceDetails:{
-            date:'',
-            invoiceNumber:'',
-            companyLogo:''
+        invoiceDetails: {
+            date: '',
+            invoiceNumber: '',
+            companyLogo: '',
         },
         items: [],
         senderDetails: {
@@ -29,7 +30,7 @@ export default function InvoiceGenerator() {
         tax: 0,
         subTotal: 0,
         total: 0,
-        signImage:''
+        signImage: '',
     });
 
     let handleItemUpdate = (items) => {
@@ -77,33 +78,43 @@ export default function InvoiceGenerator() {
         setData(data);
         console.log(data);
     };
-    let handleSignImage = (signImage) =>{
-        data.signImage = signImage
-        setData(data)
-        console.log(data)
-    }
-    let handleInvoiveDetails = (invoiceDetails)=>{
-        data.invoiceDetails = invoiceDetails
-        setData(data)
-        console.log(data) 
-    }
+    let handleSignImage = (signImage) => {
+        data.signImage = signImage;
+        setData(data);
+        console.log(data);
+    };
+    let handleInvoiveDetails = (invoiceDetails) => {
+        data.invoiceDetails = invoiceDetails;
+        setData(data);
+        console.log(data);
+    };
 
     return (
         <div className="InvoiceGenerator">
-            <h1>Invoice Generator</h1>
-            <InvoiceDetails updateInvoiceDetails={handleInvoiveDetails}></InvoiceDetails>
+            <div className='InvoiceHeader'>
+                <img src={logo} style={{height:100,width:100,borderRadius:20}}></img>
+                <h1 style={{paddingLeft:20}}>Invoice Generator</h1>
+            </div>
+
+            <InvoiceDetails
+                updateInvoiceDetails={handleInvoiveDetails}
+            ></InvoiceDetails>
             <div>
-                <div className="Details-wrapper">
-                    <h2>Sender's Information</h2>
-                    <DetailsForm
-                        updateDetails={handleSenderDetailsUpdate}
-                    ></DetailsForm>
-                </div>
-                <div className="Details-wrapper">
-                    <h2>Recipient's Information</h2>
-                    <DetailsForm
-                        updateDetails={handleReceiverDetailsUpdate}
-                    ></DetailsForm>
+                <div className="Details-container">
+                    <div className="Details-wrapper">
+                        <h2>Sender's Information</h2>
+                        <hr />
+                        <DetailsForm
+                            updateDetails={handleSenderDetailsUpdate}
+                        ></DetailsForm>
+                    </div>
+                    <div className="Details-wrapper">
+                        <h2>Recipient's Information</h2>
+                        <hr />
+                        <DetailsForm
+                            updateDetails={handleReceiverDetailsUpdate}
+                        ></DetailsForm>
+                    </div>
                 </div>
                 <ItemList
                     updateParentItem={handleItemUpdate}
@@ -112,7 +123,9 @@ export default function InvoiceGenerator() {
                     updateParentSubTotal={handleSubTotalUpdate}
                     updateParentTotal={handleTotalUpdate}
                 ></ItemList>
-                <TotalSection updateParentSignImage={handleSignImage}></TotalSection>
+                <TotalSection
+                    updateParentSignImage={handleSignImage}
+                ></TotalSection>
                 <InvoiceTemplate data={data} />
             </div>
         </div>

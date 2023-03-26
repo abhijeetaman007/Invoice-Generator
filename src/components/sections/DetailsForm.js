@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 
 export default function DetailsForm(props) {
     const [name, setName] = useState();
@@ -64,7 +63,6 @@ export default function DetailsForm(props) {
             </form>
             <div className="button-container">
                     {/* <button className="button" onClick={handleFormSubmit}>Submit</button> */}
-                    <Toaster />
                     <button className="button" onClick={handleClear}>
                         Clear
                     </button>

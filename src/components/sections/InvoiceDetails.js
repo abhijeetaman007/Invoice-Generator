@@ -13,7 +13,9 @@ export default function InvoiceDetails(props) {
     },[date,invoiceNumber,companyLogo])    
 
     return (
-        <div>
+        <div className='InvoiceDetailsWrapper'>
+            <h2>Invoice Details</h2>
+            <hr/>
             <label htmlFor="date">Date :</label>
             <input
                 id="invoiceno"

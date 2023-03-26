@@ -1,161 +1,31 @@
-/* * {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: rgb(177, 203, 221);
+  background-color: #C0D8C0;
   -webkit-font-smoothing: antialiased;
   font-family: 'Gill Sans MT', 'GillSans MT', 'Gill Sans', GillSans, Arial, Helvetica, sans-serif;
   font-size: 13.5px;
-} */
-
-/* h1 {
-  font-weight: normal;
-  margin: 0 0 12px 0;
-  text-transform: capitalize;
+  /* color: black; */
 }
 
-div.wrapper {
-  margin: 20px auto 20px auto; 
-  width: 90%; 
-}
-
-div.wrapper:after {
- clear: both;
- content: ".";
- display: block;
- height: 1px;
- visibility: hidden;	 
-}
-
-div#logo {
- margin: 0 0 6px 0; 
-}
-
-div.grid {
- border-radius: 10px;
- box-shadow: 0 1px 2px 3px rgba( 1,1,1, 0.15);
- padding: 0;
- position: relative;
- overflow: hidden;
-}
-
-.col {
- float: left;
-}
-
-.col-2-3 {
- width: 66%;
-}
-
-.col-1-3 {
-  width: 34%; 
-}
-aside {
-  font-family: "Helvetica Neue",HelveticaNeue,Helvetica,Arial,sans-serif;
-}
-aside ul {
-  margin: 0;
-  padding: 0 15px;
-  list-style-type: none;
-}
-aside ul li {
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0pt 1px 0pt rgba(255, 255, 255, 0.25);
-  font-size: 13px;
-  text-shadow: 0 1px 0 rgba( 255, 255, 255, 1);
-}
-aside ul li:last-of-type{
-  border-bottom: 0;
-  box-shadow: none;
-}
-aside ul li a {
-  color: rgb(63, 63, 63);
-  display: block;
-  font-weight: bold;
-  padding: 3.5% 0;
-  text-decoration: none;
-  text-shadow: 0 1px 0 rgba(255,255,255,1);
-}
-aside ul li:hover a {
-  color: #36C;
-}
-aside:before{
-  background-color: #eee;
-  border-radius: 0 10px 10px 0;
-  content: "";
-  height: 100%;
-  padding: 0;
-  position: absolute;
-  visibility: visible;
-  width: 34%;
-  z-index: -2;
-}
-.content-main {
-  background-color: #fff;
-  border-radius: 10px 0 0 10px;
-}
-.content-main:before{
-  background-color: #fff;
-  border-radius: 10px 0 0 10px;
-  box-shadow: 2px 0 3px 1px rgba( 1,1,1, 0.055);
-  content: "";
-  height: 100%;
-  padding: 0;
-  position: absolute;
-  visibility: visible;
-  width: 66%;
-  z-index: -1;
-}
-.module {
- padding: 15px; 
-}
-ol {
- margin: 12px 32px 24px 32px; 
-}
-em {
- color: #F65857; 
-}
-p {
- line-height: 140%;
- margin: 0 0 16px 0;
-}*/
-
-/* .div{
-  
-} */
-
-.InvoiceGenerator{
-  box-sizing: border-box;
-  /* width: 100%; */
-  height: 100%;
-  padding: 20px;
-  margin: 50px;
-
-  background-color: rgb(252, 238, 238);
-  border-radius: 10px;
-} 
-
-.Details-wrapper{
-  display: inline-block;
-  background-color: rgb(211, 198, 198);
-  width: 45%;
-  margin: 10px;
-  vertical-align: top;
-}
-
-/* label {
+label {
   display: block;
   margin-bottom: 0.25em;
   text-align: left;
-} */
+  font-family: 'Gill Sans MT', 'GillSans MT', 'Gill Sans', GillSans, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight:700;
+}
 
-/* input, select, textarea {
+input, select, textarea {
   display: block;
-  /* width: 100%; */
-  /*margin-left: 5px;
+  color: black;
+  width: 50%;
+  margin-left: 5px;
   margin-bottom: 1em;
   border: none;
   border-radius: 4px;
@@ -163,11 +33,18 @@ p {
   font-family: "Work Sans", sans-serif;
   font-weight: 300;
   font-size: 1em;
-} */
 
-/* button {
+}
+
+.ItemInput{
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+}
+
+button {
   width: 25%;
-  background: #61dafb;
+  background: #C0D8C0;
   color: #282c34;
   font-family: "Work Sans", sans-serif;
   font-size: 1em;
@@ -176,17 +53,40 @@ p {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-} */
-
-.button-container{
-  display: flex;
 }
+
+/* .button-container{
+  display: flex;
+} */
+.DeleteButton{
+  background-color: #DD4A48;
+  width: 20%;
+  margin: 10px;
+}
+
+
+.InvoiceGenerator{
+  box-sizing: border-box;
+  /* width: 100%; */
+  height: 100%;
+  padding: 20px;
+  margin: 50px;
+
+  background-color: #FFFBEB;
+  border-radius: 10px;
+  
+  /* box-shadow: #282c34 */
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+} 
+
 
 .ItemListWrapper{
   padding: 10px;
-  background-color: rgb(211, 198, 198);
+  background-color: #F5EEDC;
   /* width: 45%; */
   margin: 10px;
+  border-radius: 10px;
   /* vertical-align: top;  */
 }
 
@@ -194,17 +94,65 @@ p {
   display: flex;
 }
 
-.DeleteButton{
-  background-color: red;
+.Details-wrapper{
+  display: inline-block;
+  /* background-color: #FFFBEB; */
+  padding: 10px;
+  background-color: #F5EEDC;
+  width: 50%;
+  margin: 10px;
+  vertical-align: top;
+  border-radius: 10px;
 }
+
+
 .TotalWrapper{
   padding: 10px;
-  background-color: rgb(211, 198, 198);
+  background-color: #F5EEDC;
+  width: 45%;
+  margin: 10px;
+  border-radius: 10px;
+}
+.InvoiceDetailsWrapper{
+  padding: 10px;
+  background-color: #F5EEDC;
+  border-radius: 10px;
   /* width: 45%; */
   margin: 10px;
+  margin-top: 30px;
 }
-/* .Item{
+.Details-container{
+  width: 100%;
   display: flex;
-} */
+}
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+.InvoiceHeader{
+  /* width: 100%; */
+  justify-content: flex-start;
+  display: flex;
+  /* font-family: 'DM Serif Display', serif; */
+  font-family: 'DM Serif Display', serif;
+  font-size: x-large;
+}
 
+.UploadSignSectionWrapper{
+  padding: 10px;
+  background-color: #F5EEDC;
+  border-radius: 10px;
+  width: 45%;
+  margin: 10px;
+}
+
+.TotalContainer{
+  width: 100%;
+  display: flex;
+}
+
+.Total{
+  margin: 5px;
+}
+
+hr{
+  margin: 5px;
+}

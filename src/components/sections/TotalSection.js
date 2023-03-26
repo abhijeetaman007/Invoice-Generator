@@ -20,7 +20,7 @@ export default function TotalSection(props) {
     },[signImage])
 
     return (
-        <div>
+        <div className='UploadSignSectionWrapper'>
             <form>
               <Toaster />
                 <label htmlFor="uploadImage">Upload Signature Image</label>

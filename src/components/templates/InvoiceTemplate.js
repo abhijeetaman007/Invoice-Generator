@@ -1,12 +1,78 @@
 import React, {useRef} from 'react';
 import jsPDF from 'jspdf';
+import toast, { Toaster } from 'react-hot-toast';
+
+
+
+const validate = (data) =>{
+
+  let validate = true;
+
+  if(!data.invoiceDetails.date){
+    validate = false
+    toast.error("Please Enter Invoice Date!",{
+      closeButton: true,
+    })
+  }
+  if(!data.invoiceDetails.invoiceNumber){
+    validate = false
+    toast.error("Please Enter Invoice Number!")
+  }
+  if(!data.invoiceDetails.companyLogo){
+    validate = false
+    toast.error("Please Enter Company Logo!!")
+  }
+  
+  if(!data.senderDetails.name){
+    validate = false
+    toast.error("Please Enter Sender's Name!")
+  }
+  if(!data.senderDetails.email){
+    validate = false
+    toast.error("Please Enter Sender's Email!")
+  }
+  if(!data.senderDetails.address){
+    validate = false
+    toast.error("Please Enter Sender's Address!")
+  }
+  if(!data.senderDetails.phoneNumber){
+    validate = false
+    toast.error("Please Enter Sender's PhoneNumber!")
+  }
+  
+  if(!data.receiverDetails.name){
+    validate = false
+    toast.error("Please Enter Receiver's Name!")
+  }
+  if(!data.receiverDetails.email){
+    validate = false
+    toast.error("Please Enter Receiver's Email!")
+  }
+  if(!data.receiverDetails.address){
+    validate = false
+    toast.error("Please Enter Receiver's Address!")
+  }
+  if(!data.receiverDetails.phoneNumber){
+    validate = false
+    toast.error("Please Enter Receiver's PhoneNumber!")
+  }
+
+  if(!data.signImage){
+    validate = false
+    toast.error("Please Enter Image of your signature!")
+  }
+
+  return validate;
+}
+
 
 const InvoiceTemplate = (props) => {
-    const pdfRef = useRef(null);
 
     const downloadPDF = async () => {
         console.log(props);
-
+        if(!validate(props.data)){
+          return;
+        }
         const doc = new jsPDF();
 
         function encodeImage(image) {
@@ -96,12 +162,12 @@ const InvoiceTemplate = (props) => {
         doc.addImage(signImage,'PNG',20,y+35,30,30)
 
         doc.save('invoice.pdf');
+        toast.success("Invoice Generated!")
     };
 
     return (
         <div>
-            <button onClick={downloadPDF}>Download PDF</button>
-            <div ref={pdfRef} />
+            <button onClick={downloadPDF}>Generate Invoice</button>
         </div>
     );
 };
