@@ -10,56 +10,54 @@ const validate = (data) =>{
 
   if(!data.invoiceDetails.date){
     validate = false
-    toast.error("Please Enter Invoice Date!",{
-      closeButton: true,
-    })
+    toast.error("Please enter Invoice Date!")
   }
   if(!data.invoiceDetails.invoiceNumber){
     validate = false
-    toast.error("Please Enter Invoice Number!")
+    toast.error("Please enter Invoice Number!")
   }
   if(!data.invoiceDetails.companyLogo){
     validate = false
-    toast.error("Please Enter Company Logo!!")
+    toast.error("Please enter Company Logo!!")
   }
   
   if(!data.senderDetails.name){
     validate = false
-    toast.error("Please Enter Sender's Name!")
+    toast.error("Please enter Sender's Name!")
   }
   if(!data.senderDetails.email){
     validate = false
-    toast.error("Please Enter Sender's Email!")
+    toast.error("Please enter Sender's Email!")
   }
   if(!data.senderDetails.address){
     validate = false
-    toast.error("Please Enter Sender's Address!")
+    toast.error("Please enter Sender's Address!")
   }
   if(!data.senderDetails.phoneNumber){
     validate = false
-    toast.error("Please Enter Sender's PhoneNumber!")
+    toast.error("Please enter Sender's PhoneNumber!")
   }
   
   if(!data.receiverDetails.name){
     validate = false
-    toast.error("Please Enter Receiver's Name!")
+    toast.error("Please enter Receiver's Name!")
   }
   if(!data.receiverDetails.email){
     validate = false
-    toast.error("Please Enter Receiver's Email!")
+    toast.error("Please enter Receiver's Email!")
   }
   if(!data.receiverDetails.address){
     validate = false
-    toast.error("Please Enter Receiver's Address!")
+    toast.error("Please enter Receiver's Address!")
   }
   if(!data.receiverDetails.phoneNumber){
     validate = false
-    toast.error("Please Enter Receiver's PhoneNumber!")
+    toast.error("Please enter Receiver's PhoneNumber!")
   }
 
   if(!data.signImage){
     validate = false
-    toast.error("Please Enter Image of your signature!")
+    toast.error("Please enter image of your signature!")
   }
 
   return validate;
@@ -167,6 +165,7 @@ const InvoiceTemplate = (props) => {
 
     return (
         <div>
+            <Toaster/>
             <button onClick={downloadPDF}>Generate Invoice</button>
         </div>
     );

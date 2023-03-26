@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-export default function TotalSection(props) {
+export default function SignatureUpload(props) {
     const [signImage, setSignImage] = useState();
 
     let handleUploadImage = (event) => {
@@ -22,7 +22,6 @@ export default function TotalSection(props) {
     return (
         <div className='UploadSignSectionWrapper'>
             <form>
-              <Toaster />
                 <label htmlFor="uploadImage">Upload Signature Image</label>
                 <input
                     id="uploadImage"

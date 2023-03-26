@@ -3,7 +3,7 @@ import DetailsForm from './sections/DetailsForm';
 import InvoiceDetails from './sections/InvoiceDetails';
 import ItemList from './sections/ItemList';
 import InvoiceTemplate from './templates/InvoiceTemplate';
-import TotalSection from './sections/TotalSection';
+import SignatureUpload from './sections/SignatureUpload';
 import logo from '../resources/logo.jpg'
 
 export default function InvoiceGenerator() {
@@ -74,6 +74,7 @@ export default function InvoiceGenerator() {
         console.log(data);
     };
     let handleTotalUpdate = (total) => {
+        console.log("Handle Total Called!")
         data.total = total;
         setData(data);
         console.log(data);
@@ -123,9 +124,9 @@ export default function InvoiceGenerator() {
                     updateParentSubTotal={handleSubTotalUpdate}
                     updateParentTotal={handleTotalUpdate}
                 ></ItemList>
-                <TotalSection
+                <SignatureUpload
                     updateParentSignImage={handleSignImage}
-                ></TotalSection>
+                ></SignatureUpload>
                 <InvoiceTemplate data={data} />
             </div>
         </div>

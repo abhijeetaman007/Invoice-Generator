@@ -3,7 +3,6 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 
 export default function ItemList(props) {
     const [items, setItems] = useState([{ name: '', price: '', qty: '' }]);
-
     const [total, setTotal] = useState(0);
     const [subTotal,setSubTotal] = useState(0)
     const [tax, setTax] = useState();
@@ -13,6 +12,7 @@ export default function ItemList(props) {
         const newItems = [...items];
         newItems[index][event.target.name] = event.target.value;
         setItems(newItems);
+        
     };
 
     const handleAddItem = () => {
@@ -28,31 +28,43 @@ export default function ItemList(props) {
     const handleDiscountChange = (event) =>{
       let newDiscount = event.target.value
       setDiscount(Number(newDiscount))
-      console.log("New set :",newDiscount)
     }
 
     const handleTaxChange = (event) =>{
       let newTax = event.target.value
       setTax(Number(newTax))
-      console.log("New set tax:",newTax)
     }
 
 
 
     useEffect(() => {
+        console.log("Inside Use Effect!")
+
         let newTotal = 0;
         items.forEach((element) => {
             newTotal = newTotal + element.price * element.qty;
         });
 
         setSubTotal(Math.round(newTotal))
+        setTotal(Math.round(newTotal))
+        console.log("Neww Totalllingggg")
+        console.log(newTotal)
+        console.log(total)
+        console.log(subTotal)
+        props.updateParentItem(items)
         props.updateParentSubTotal(newTotal)
+        props.updateParentTotal(newTotal)
         
+
         console.log("Discount is ",discount)
         console.log("Tax is ",tax)
 
-        newTotal = newTotal - (Number(discount)/100)*newTotal
-        newTotal = newTotal + (Number(tax)/100)*newTotal
+        // if(discount){
+            newTotal = newTotal - (Number(discount)/100)*newTotal
+        // }
+        // if(tax){
+            newTotal = newTotal + (Number(tax)/100)*newTotal
+        // }
 
         if(isNaN(newTotal))
             newTotal = 0
@@ -60,11 +72,10 @@ export default function ItemList(props) {
         
         props.updateParentTotal(newTotal)
         props.updateParentItem(items)
-
         props.updateParentTax(tax)
         props.updateParentDiscount(discount)
         
-    }, [items,discount,tax]);
+    }, [items,discount,tax,total,subTotal]);
 
     return (
         <div>
