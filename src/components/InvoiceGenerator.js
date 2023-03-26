@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import DetailsForm from './DetailsForm';
-import InvoiceDetails from './InvoiceDetails';
-import ItemList from './ItemList';
+import DetailsForm from './sections/DetailsForm';
+import InvoiceDetails from './sections/InvoiceDetails';
+import ItemList from './sections/ItemList';
 import InvoiceTemplate from './templates/InvoiceTemplate';
-import TotalSection from './TotalSection';
+import TotalSection from './sections/TotalSection';
 
 export default function InvoiceGenerator() {
     const [data, setData] = useState({

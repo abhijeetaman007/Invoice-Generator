@@ -8,7 +8,6 @@ const InvoiceTemplate = (props) => {
         console.log(props);
 
         const doc = new jsPDF();
-        // const reader = new FileReader();
 
         function encodeImage(image) {
             return new Promise((resolve, reject) => {
@@ -61,7 +60,6 @@ const InvoiceTemplate = (props) => {
 
         // Add table rows
         doc.setFontSize(10);
-        // console.log(props.data.items[index].name)
         let y = 125;
         for (let index = 0; index < props.data.items.length; index++) {
             y = 125 + 7 * index;

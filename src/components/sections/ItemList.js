@@ -6,14 +6,13 @@ export default function ItemList(props) {
 
     const [total, setTotal] = useState(0);
     const [subTotal,setSubTotal] = useState(0)
-    const [tax, setTax] = useState(0);
-    const [discount, setDiscount] = useState(0);
+    const [tax, setTax] = useState();
+    const [discount, setDiscount] = useState();
 
     const handleItemChange = (event, index) => {
         const newItems = [...items];
         newItems[index][event.target.name] = event.target.value;
         setItems(newItems);
-        // props.updateParentItem(items)
     };
 
     const handleAddItem = () => {
@@ -24,27 +23,21 @@ export default function ItemList(props) {
         const newItems = [...items];
         newItems.splice(index, 1);
         setItems(newItems);
-        // props.updateParentItem(items)
     };
 
     const handleDiscountChange = (event) =>{
       let newDiscount = event.target.value
       setDiscount(Number(newDiscount))
-      // props.updateParentDiscount(newDiscount)
+      console.log("New set :",newDiscount)
     }
 
     const handleTaxChange = (event) =>{
       let newTax = event.target.value
       setTax(Number(newTax))
-      // props.updateParentTax(newTax)
+      console.log("New set tax:",newTax)
     }
 
 
-
-    // const handleTotaChange = (event) =>{
-    //   let newDiscount = event.target.discount
-    //   setDiscount(newDiscount)
-    // }
 
     useEffect(() => {
         let newTotal = 0;
@@ -64,6 +57,9 @@ export default function ItemList(props) {
         setTotal(Math.round(newTotal));
         props.updateParentTotal(newTotal)
         props.updateParentItem(items)
+
+        props.updateParentTax(tax)
+        props.updateParentDiscount(discount)
         
     }, [items,discount,tax]);
 
@@ -121,13 +117,6 @@ export default function ItemList(props) {
                     placeholder="Enter Tax"
                     onChange={(event) => handleTaxChange(event)}
                 />
-                {/* <input
-                    type="text"
-                    name="total"
-                    value={total}
-                    placeholder="Item name"
-                    onChange={(event) => handleTotalChange(event)}
-                /> */}
                 <p>SubTotal : ${subTotal}</p>
                 <p>Total : $ {total}</p>
             </div>

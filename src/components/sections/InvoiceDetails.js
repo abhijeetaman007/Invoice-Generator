@@ -12,18 +12,6 @@ export default function InvoiceDetails(props) {
         })
     },[date,invoiceNumber,companyLogo])    
 
-    // let handleUploadImage = (event) => {
-    //     console.log(event.target.files[0])
-    //     let fileName = event.target.files[0].name
-    //     // if(!(fileName.endsWith('.png')  || fileName.endsWith('.jpg') || fileName.endsWith('.jpeg') || fileName.endsWith('.svg'))){
-    //     //   toast.error("Enter valid image format!") 
-    //     //   return; 
-    //     // }
-    //     console.log(event.target.files[0])
-    //     setCompanyLogo(event.target.files[0])
-    //     // setSignImage(event.target.files[0])
-    //   };
-
     return (
         <div>
             <label htmlFor="date">Date :</label>
