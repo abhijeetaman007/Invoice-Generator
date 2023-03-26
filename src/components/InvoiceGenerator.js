@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import DetailsForm from './DetailsForm';
-import Footer from './Footer';
 import InvoiceDetails from './InvoiceDetails';
 import ItemList from './ItemList';
 import Items from './ItemList';
@@ -26,6 +25,7 @@ export default function InvoiceGenerator() {
         tax: 0,
         subTotal: 0,
         total: 0,
+        signImage:''
     });
 
     let handleItemUpdate = (items) => {
@@ -73,6 +73,11 @@ export default function InvoiceGenerator() {
         setData(data);
         console.log(data);
     };
+    let handleSignImage = (signImage) =>{
+        data.signImage = signImage
+        setData(data)
+        console.log(data)
+    }
 
     // let handleNameUpdate = (name,isSender) =>{
     //     data.name = name;
@@ -97,9 +102,6 @@ export default function InvoiceGenerator() {
         <div className="InvoiceGenerator">
             <InvoiceDetails></InvoiceDetails>
             <div>
-                <h3>Invoice Details</h3>
-            </div>
-            <div>
                 <div className="Details-wrapper">
                     <h2>Sender's Information</h2>
                     <DetailsForm
@@ -119,7 +121,7 @@ export default function InvoiceGenerator() {
                     updateParentSubTotal={handleSubTotalUpdate}
                     updateParentTotal={handleTotalUpdate}
                 ></ItemList>
-                <Footer></Footer>
+                <TotalSection updateParentSignImage={handleSignImage}></TotalSection>
                 <InvoiceTemplate data={data} />
             </div>
         </div>
