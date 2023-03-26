@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
-import Item from './Item';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
 export default function ItemList(props) {
@@ -139,8 +137,7 @@ export default function ItemList(props) {
 
 
 // TODOs:
-// Remove submit
-// Complte add signature and upload flow
-// Syling
-// Add Validatins before generate and download use of tooltip,highlight it and toast  
+// Styling
+// Add Validations before generate and download use of tooltip,highlight it and toast  
 // Add View Template(Additional)
+// Add notes additonal 

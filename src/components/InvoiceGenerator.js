@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import DetailsForm from './DetailsForm';
 import InvoiceDetails from './InvoiceDetails';
 import ItemList from './ItemList';
-import Items from './ItemList';
 import InvoiceTemplate from './templates/InvoiceTemplate';
 import TotalSection from './TotalSection';
 
 export default function InvoiceGenerator() {
     const [data, setData] = useState({
+        invoiceDetails:{
+            date:'',
+            invoiceNumber:'',
+            companyLogo:''
+        },
         items: [],
         senderDetails: {
             name: '',
@@ -78,29 +82,16 @@ export default function InvoiceGenerator() {
         setData(data)
         console.log(data)
     }
-
-    // let handleNameUpdate = (name,isSender) =>{
-    //     data.name = name;
-    //     setData(name)
-    // }
-
-    // let handleAddressUpdate = (address,isS) =>{
-    //     data.address = address
-    //     setData(address)
-    // }
-
-    // let handleEmailUpdate = (email) =>{
-    //     data.email = email
-    //     setData(email)
-    // }
-
-    // let handlePhoneNumberUpdate = (phoneNumber) =>{
-
-    // }
+    let handleInvoiveDetails = (invoiceDetails)=>{
+        data.invoiceDetails = invoiceDetails
+        setData(data)
+        console.log(data) 
+    }
 
     return (
         <div className="InvoiceGenerator">
-            <InvoiceDetails></InvoiceDetails>
+            <h1>Invoice Generator</h1>
+            <InvoiceDetails updateInvoiceDetails={handleInvoiveDetails}></InvoiceDetails>
             <div>
                 <div className="Details-wrapper">
                     <h2>Sender's Information</h2>

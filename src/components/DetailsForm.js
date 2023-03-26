@@ -7,65 +7,6 @@ export default function DetailsForm(props) {
     const [phoneNumber, setPhoneNumber] = useState();
     const [email, setEmail] = useState();
 
-
-    // const handleFormSubmit =async (e) => {
-        
-    //     e.preventDefault();
-        
-    //     if(!name){
-    //         toast.error('Please enter name')
-    //         return;    
-    //     }
-    //     if(!address){
-    //         toast.error('Please enter address')
-    //         return
-    //     }
-    //     if(!phoneNumber){
-    //         toast.error('Please enter phone number')
-    //         return;
-    //     }
-    //     if(!email){
-    //         toast.error('Please enter email')
-    //     }
-
-    //     await props.updateDetails({name,address,phoneNumber,email})
-
-    //     console.log("We are back!")
-    //     // console.log("We got your values")
-    //     // console.log(name,address,phoneNumber,email)
-    //     handleClear(e)
-
-    // }
-
-    let handleUpdateName = (event) =>{
-        setName(event.target.value)
-        // props.updateDetails({
-        //     name,email,address,phoneNumber
-        // })
-    }
-
-    let handleUpdateAddress = (event) =>{
-        setAddress(event.target.value)
-        // props.updateDetails({
-            // name,email,address,phoneNumber
-        // })
-    }
-
-    let handleUpdateEmail = (event) =>{
-        setEmail(event.target.value)   
-        // props.updateDetails({
-            // name,email,address,phoneNumber
-        // })
-    }
-
-    let handleUpdatePhoneNumber = (event) =>{
-        setPhoneNumber(event.target.value)
-        // props.updateDetails({
-            // name,email,address,phoneNumber
-        // })
-    }
-
-
     function handleClear(e) {
         e.preventDefault();
 
@@ -86,43 +27,39 @@ export default function DetailsForm(props) {
             <form>
                     <label htmlFor="name">Name</label>
                     <input
-                        id="name" // id corresponds to htmlFor in <label>
+                        id="name" 
                         type="text"
                         name="name"
                         placeholder="Enter Name"
-                        value={name} // use state variable to keep track of value
-                        // add onChange event to capture state changes when user types
-                        onChange={handleUpdateName}
+                        value={name}
+                        onChange={(e)=>setName(e.target.value)}
                     />
                     <label htmlFor="address">Address</label>
                     <input
-                        id="address" // id corresponds to htmlFor in <label>
+                        id="address" 
                         type="text"
                         name="address"
                         placeholder="Enter Address"
-                        value={address} // use state variable to keep track of value
-                        // add onChange event to capture state changes when user types
-                        onChange={handleUpdateAddress}
+                        value={address} 
+                        onChange={(e)=>setAddress(e.target.value)}
                     />
                     <label htmlFor="phoneNumber">Phone Number</label>
                     <input
-                        id="phoneNumber" // id corresponds to htmlFor in <label>
+                        id="phoneNumber" 
                         type="text"
                         name="firstName"
                         placeholder="Enter Phone Number"
-                        value={phoneNumber} // use state variable to keep track of value
-                        // add onChange event to capture state changes when user types
-                        onChange={handleUpdatePhoneNumber}
+                        value={phoneNumber} 
+                        onChange={(e)=>setPhoneNumber(e.target.value)}
                     />
                     <label htmlFor="email">Email</label>
                     <input
-                        id="email" // id corresponds to htmlFor in <label>
+                        id="email" 
                         type="text"
                         name="email"
                         placeholder="Enter email"
-                        value={email} // use state variable to keep track of value
-                        // add onChange event to capture state changes when user types
-                        onChange={handleUpdateEmail}
+                        value={email} 
+                        onChange={(e)=>setEmail(e.target.value)}
                     />
             </form>
             <div className="button-container">

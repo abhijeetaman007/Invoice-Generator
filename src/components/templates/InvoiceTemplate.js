@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useRef} from 'react';
 import jsPDF from 'jspdf';
 
 const InvoiceTemplate = (props) => {
@@ -8,7 +8,7 @@ const InvoiceTemplate = (props) => {
         console.log(props);
 
         const doc = new jsPDF();
-        const reader = new FileReader();
+        // const reader = new FileReader();
 
         function encodeImage(image) {
             return new Promise((resolve, reject) => {
@@ -21,10 +21,10 @@ const InvoiceTemplate = (props) => {
             });
         }
 
-        let imageData = await encodeImage(props.data.signImage);
+        let companyLogo = await encodeImage(props.data.invoiceDetails.companyLogo);
 
         // Add company logo
-        doc.addImage(imageData, 'PNG', 15, 15, 30, 30);
+        doc.addImage(companyLogo, 'PNG', 15, 15, 30, 30);
 
         doc.setFontSize(12);
         doc.text(props.data.senderDetails.name, 60, 25);
@@ -37,8 +37,8 @@ const InvoiceTemplate = (props) => {
         doc.setFontSize(16);
         doc.text('INVOICE', 140, 25);
         doc.setFontSize(12);
-        doc.text('Invoice #: 1234', 140, 35);
-        doc.text('Date: 03/25/2023', 140, 42);
+        doc.text(props.data.invoiceDetails.invoiceNumber, 140, 35);
+        doc.text('Date: '+props.data.invoiceDetails.date, 140, 42);
 
         // Add customer information
         doc.setFontSize(12);
@@ -71,11 +71,6 @@ const InvoiceTemplate = (props) => {
             doc.text(props.data.items[index].qty, 160, y);
         }
 
-        // doc.text('2', 20, 132);
-        // doc.text('Item 2', 60, 132);
-        // doc.text('1', 120, 132);
-        // doc.text('$5.00', 160, 132);
-
         // Add table footer
         doc.setDrawColor(0);
         doc.line(15, y+28, 195, y+28);
@@ -98,8 +93,9 @@ const InvoiceTemplate = (props) => {
         doc.text('Total:', 120, y+56);
         doc.text(String(Math.round(props.data.total)), 160, y+56);
 
+        let signImage = await encodeImage(props.data.signImage)
         // Adding Signature
-        doc.addImage(imageData,'PNG',20,y+35,30,30)
+        doc.addImage(signImage,'PNG',20,y+35,30,30)
 
         doc.save('invoice.pdf');
     };

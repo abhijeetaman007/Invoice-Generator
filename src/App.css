@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Gill Sans MT', 'GillSans MT', 'Gill Sans', GillSans, Arial, Helvetica, sans-serif;
   font-size: 13.5px;
-}
+} */
 
 /* h1 {
   font-weight: normal;
@@ -146,16 +146,16 @@ p {
   vertical-align: top;
 }
 
-label {
+/* label {
   display: block;
   margin-bottom: 0.25em;
   text-align: left;
-}
+} */
 
-input, select, textarea {
+/* input, select, textarea {
   display: block;
   /* width: 100%; */
-  margin-left: 5px;
+  /*margin-left: 5px;
   margin-bottom: 1em;
   border: none;
   border-radius: 4px;
@@ -163,9 +163,9 @@ input, select, textarea {
   font-family: "Work Sans", sans-serif;
   font-weight: 300;
   font-size: 1em;
-}
+} */
 
-button {
+/* button {
   width: 25%;
   background: #61dafb;
   color: #282c34;
@@ -176,7 +176,7 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
+} */
 
 .button-container{
   display: flex;
@@ -206,3 +206,5 @@ button {
 /* .Item{
   display: flex;
 } */
+
+
